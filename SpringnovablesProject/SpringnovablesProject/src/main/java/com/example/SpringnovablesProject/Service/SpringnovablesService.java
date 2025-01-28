@@ -1,6 +1,5 @@
 package com.example.SpringnovablesProject.Service;
 
-import com.example.SpringnovablesProject.Domain.MeditionDTO;
 import com.example.SpringnovablesProject.Domain.MeditionFinal;
 import com.example.SpringnovablesProject.Domain.Radiation;
 import com.example.SpringnovablesProject.Repository.MeditionRepository;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -22,12 +22,12 @@ public class SpringnovablesService {
 
     //ENCUENTRA UNA MEDICION POR ID
     public Optional <MeditionFinal> findById(Long id){
-        return repository.findByPkMedicionID(id);
+        return repository.findByPkMeditionID(id);
     }
 
     //ACTUALIZA UNA MEDICION POR ID
     public void updateMedicion(MeditionFinal request, Long id) {
-        Optional <MeditionFinal> optionalMedition = repository.findByPkMedicionID(id);
+        Optional <MeditionFinal> optionalMedition = repository.findByPkMeditionID(id);
 
         //AQUI TENEMOS LOS DATOS QUE HAY QUE COMPARAR CON EL JSON
         System.out.println("El optionalMeditionFinal tiene valores de Longitud, latitud y año: "
@@ -63,7 +63,30 @@ public class SpringnovablesService {
         }
     }
 
+    //CREA UNA MEDICION
     public void create(MeditionFinal request) {
         repository.save(request);
+    }
+
+    //BORRA UNA MEDICION
+    public boolean deleteMedicion(Long id) {
+        try {
+            Optional <MeditionFinal> optionalMedition = repository.findByPkMeditionID(id);
+            Radiation radiationToDelete= new Radiation();
+            radiationToDelete= repository.findByRadiation(optionalMedition.get().getLatitud(),
+                                                    optionalMedition.get().getLongitud(),
+                                                    optionalMedition.get().getAnio(),
+                                                    optionalMedition.get().getRadiation());
+            repository.deleteByPkMeditionID(id,radiationToDelete);
+            return true;
+        }catch (Exception e) {
+            System.out.println("ERROR EN EL METODO DE LA CLASE SERVIDORA");
+            return false;
+        }
+    }
+
+    //ENCUENTRA TODAS LAS MEDICIONES
+    public List<MeditionFinal> findAll() {
+        return repository.findAll();
     }
 }

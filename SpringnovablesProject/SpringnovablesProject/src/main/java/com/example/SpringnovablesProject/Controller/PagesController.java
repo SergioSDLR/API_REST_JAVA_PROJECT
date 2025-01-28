@@ -4,8 +4,10 @@ import com.example.SpringnovablesProject.Domain.MeditionDTO;
 import com.example.SpringnovablesProject.Domain.MeditionFinal;
 import com.example.SpringnovablesProject.Service.SpringnovablesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,9 +33,20 @@ public class PagesController {
         this.service.create(request);
     }
 
-    /* @GetMapping("mediciones")
-    public ResponseEntity<List<MedicionDTO>> getAll(){
-        List<MedicionDTO> mediciones = this.service.getAllMediciones();
+    @GetMapping(value = "delete/{id}")
+    public void deleteMedicionById(@PathVariable Long id) {
+        var medicion = service.findById(id); // Obtener la medición antes de eliminarla
+        boolean ok = this.service.deleteMedicion(id); // Eliminar la medición
+        if (ok && medicion.isPresent()) {
+            System.out.println("Medición " + medicion + " eliminada");
+        } else {
+            System.out.println("Error al eliminar la medición con ID " + id);
+        }
+    }
+
+    @GetMapping("all")
+    public ResponseEntity<List<MeditionFinal>> getAll(){
+        List<MeditionFinal> mediciones = this.service.findAll();
 
         if (mediciones.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -43,6 +56,6 @@ public class PagesController {
             System.out.println("Mediciones encontradas");
             return ResponseEntity.ok(mediciones);
         }
-    }*/
+    }
 
 }

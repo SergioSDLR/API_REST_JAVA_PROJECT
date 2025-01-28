@@ -132,14 +132,14 @@ public class RadiationRepository {
     }
 
     //ESTE METODO ELIMINA UNA RADIACION YA EXISTENTE EN EL FICHERO JSON
-    public void deleteRadiation(String longitud, String latitud, short anio, short radiation){
+    public void deleteRadiation(Radiation radiation){
         List<Radiation> radiaciones = findAll();
         // Buscar y actualizar el elemento
         Radiation toDelete = radiaciones.stream()
-                .filter(r -> r.getRadiation()==radiation
-                        && r.getLongitud().equals(longitud)
-                        && r.getLatitud().equals(latitud)
-                        && r.getAnio() == anio)
+                .filter(r -> r.getRadiation()==radiation.getRadiation()
+                        && r.getLatitud().equals(radiation.getLatitud())
+                        && r.getLongitud().equals(radiation.getLongitud())
+                        && r.getAnio() == radiation.getAnio())
                 .findFirst()
                 .orElse(null);
 

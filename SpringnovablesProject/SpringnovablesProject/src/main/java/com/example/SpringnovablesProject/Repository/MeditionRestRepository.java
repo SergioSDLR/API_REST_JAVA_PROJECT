@@ -17,14 +17,11 @@ public class MeditionRestRepository {
     private final String URL_ENDPOINT_SPRINGNOVABLES = "http://localhost:8080/mediciones";
     private final RestTemplate restTemplate = new RestTemplate();
 
-    //GETTER URL PARA ENCAPSULARLO
-    public String getURL() {
-        return URL_ENDPOINT_SPRINGNOVABLES;
-    }
+
 
     //OBTENER LISTADO DE LAS MEDICIONES DE LA API
     public List<MeditionDTO> getAllMediciones() {
-        ResponseEntity<List<MeditionDTO>> response = restTemplate.exchange(this.getURL(), HttpMethod.GET,
+        ResponseEntity<List<MeditionDTO>> response = restTemplate.exchange(URL_ENDPOINT_SPRINGNOVABLES+"/all", HttpMethod.GET,
                 null, new ParameterizedTypeReference<>() {});
         return response.getBody();
     }
@@ -78,4 +75,17 @@ public class MeditionRestRepository {
             return Optional.empty();
         }
     }
+
+    public void deleteMedition(Long id) {
+        try {
+            // Realiza la solicitud GET al endpoint para eliminar
+            restTemplate.getForObject(URL_ENDPOINT_SPRINGNOVABLES + "/delete/" + id, Void.class);
+            System.out.println("Medición con ID " + id + " eliminada exitosamente de la API.");
+        } catch (Exception e) {
+            // Manejo básico de errores
+            System.err.println("Error al eliminar la medición con ID " + id + ": " + e.getMessage());
+        }
+    }
+
+
 }

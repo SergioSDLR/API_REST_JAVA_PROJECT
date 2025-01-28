@@ -53,8 +53,8 @@ public class MeteojavaService {
     @Transactional
     public Boolean deleteMedicion (Long id){
         try {
-            repository.deleteByPkMeditionID(id);
             System.out.println(repository.findByPkMeditionID(id));
+            repository.deleteByPkMeditionID(id);
             return true;
         }catch (Exception e) {
             System.out.println("ERROR EN EL METODO DE LA CLASE SERVIDORA");

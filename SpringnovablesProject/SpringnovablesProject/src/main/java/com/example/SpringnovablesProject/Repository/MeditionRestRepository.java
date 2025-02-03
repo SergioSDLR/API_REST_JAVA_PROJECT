@@ -78,14 +78,16 @@ public class MeditionRestRepository {
 
     public void deleteMedition(Long id) {
         try {
-            // Realiza la solicitud GET al endpoint para eliminar
-            restTemplate.getForObject(URL_ENDPOINT_SPRINGNOVABLES + "/delete/" + id, Void.class);
+            // Realiza la solicitud DELETE al endpoint para eliminar
+            restTemplate.exchange(URL_ENDPOINT_SPRINGNOVABLES + "/delete/" + id, HttpMethod.DELETE, null, Void.class);
             System.out.println("Medición con ID " + id + " eliminada exitosamente de la API.");
         } catch (Exception e) {
             // Manejo básico de errores
             System.err.println("Error al eliminar la medición con ID " + id + ": " + e.getMessage());
         }
     }
+
+
 
 
 }

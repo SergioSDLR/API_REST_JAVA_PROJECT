@@ -20,8 +20,8 @@ public class MeteojavaController {
         return this.service.getByID(id);
     }
 
-    @ResponseBody
-    @GetMapping(value="delete/{id}")
+
+    @DeleteMapping(value="delete/{id}")
     public void deleteMedicionById(@PathVariable Long id){
         Long idAEliminar=id;
         boolean ok = this.service.deleteMedicion(id);
@@ -66,7 +66,5 @@ public class MeteojavaController {
         service.create(medicion);
         System.out.println("Medicion creada.");
     }
-
-
 
 }

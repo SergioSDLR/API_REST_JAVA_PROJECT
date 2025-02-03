@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mediciones</title>
+</head>
+<body>
+<h1>ADMIN List of Medition</h1>
+<a href="/springnovables/mediciones/crear">Nueva Medición</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Latitud</th>
+        <th>Longitud</th>
+        <th>Anio</th>
+        <th>Temperature</th>
+        <th>Wind</th>
+        <th>Precipitation</th>
+        <th>Radiation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="medicion : ${mediciones}">
+        <td th:text="${medicion.pk_MedicionID}"></td>
+        <td th:text="${medicion.latitud}"></td>
+        <td th:text="${medicion.longitud}"></td>
+        <td th:text="${medicion.anio}"></td>
+        <td th:text="${medicion.temperature}"></td>
+        <td th:text="${medicion.wind}"></td>
+        <td th:text="${medicion.precipitation}"></td>
+        <td th:text="${medicion.radiation}"></td>
+        <td>
+            <a th:href="@{/springnovables/mediciones/editar/{id}(id=${medicion.pk_MedicionID})}">Editar</a>
+
+            <!-- Formulario oculto para eliminar la medición -->
+            <form th:action="@{/springnovables/mediciones/eliminar/{id}(id=${medicion.pk_MedicionID})}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" onclick="return confirm('¿Estás seguro de eliminar esta medición?');">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- Formulario de logout -->
+
+<form th:action="@{/logout}" method="post" style="display:inline;">
+    <button type="submit">Cerrar sesión</button>
+</form>
+</body>
+</html>

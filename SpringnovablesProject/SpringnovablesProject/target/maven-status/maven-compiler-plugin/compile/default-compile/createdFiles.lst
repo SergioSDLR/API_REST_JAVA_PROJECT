@@ -1,0 +1,12 @@
+com\example\SpringnovablesProject\Controller\PagesController.class
+com\example\SpringnovablesProject\Repository\MeditionRestRepository.class
+com\example\SpringnovablesProject\Domain\Radiation.class
+com\example\SpringnovablesProject\Security\SecurityConfig.class
+com\example\SpringnovablesProject\Repository\MeditionRestRepository$1.class
+com\example\SpringnovablesProject\Repository\RadiationRepository$1.class
+com\example\SpringnovablesProject\Repository\RadiationRepository.class
+com\example\SpringnovablesProject\Domain\MeditionFinal.class
+com\example\SpringnovablesProject\Repository\MeditionRepository.class
+com\example\SpringnovablesProject\Domain\MeditionDTO.class
+com\example\SpringnovablesProject\Service\SpringnovablesService.class
+com\example\SpringnovablesProject\SpringnovablesProjectApplication.class

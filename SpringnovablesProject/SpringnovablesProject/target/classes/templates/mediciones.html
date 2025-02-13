@@ -4,7 +4,11 @@
     <title>Mediciones</title>
 </head>
 <body>
-<h1>ADMIN List of Medition</h1>
+
+<!-- Header -->
+<div th:insert="~{headerAdmin :: headerAdmin}"></div>
+
+<!-- Contenido principal -->
 <a href="/springnovables/mediciones/crear">Nueva Medición</a>
 <table>
     <thead>
@@ -12,7 +16,7 @@
         <th>ID</th>
         <th>Latitud</th>
         <th>Longitud</th>
-        <th>Anio</th>
+        <th>Año</th>
         <th>Temperature</th>
         <th>Wind</th>
         <th>Precipitation</th>
@@ -31,8 +35,6 @@
         <td th:text="${medicion.radiation}"></td>
         <td>
             <a th:href="@{/springnovables/mediciones/editar/{id}(id=${medicion.pk_MedicionID})}">Editar</a>
-
-            <!-- Formulario oculto para eliminar la medición -->
             <form th:action="@{/springnovables/mediciones/eliminar/{id}(id=${medicion.pk_MedicionID})}" method="post" style="display:inline;">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" onclick="return confirm('¿Estás seguro de eliminar esta medición?');">Eliminar</button>
@@ -41,10 +43,9 @@
     </tr>
     </tbody>
 </table>
-<!-- Formulario de logout -->
 
-<form th:action="@{/logout}" method="post" style="display:inline;">
-    <button type="submit">Cerrar sesión</button>
-</form>
+<!-- Footer -->
+<div th:insert="~{footer :: footer}"></div>
+
 </body>
 </html>

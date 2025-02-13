@@ -13,10 +13,8 @@ import java.util.Optional;
 @Repository
 public class MeditionRestRepository {
 
-    //TODO RELLENAR CON LA API (QUE CONECTA CON LA BASE DE DATOS) Y HACERLO MEDIANTE INYECCIONES @VALUE, AUTOWIRED ETC.
     private final String URL_ENDPOINT_SPRINGNOVABLES = "http://localhost:8080/mediciones";
     private final RestTemplate restTemplate = new RestTemplate();
-
 
 
     //OBTENER LISTADO DE LAS MEDICIONES DE LA API
@@ -25,8 +23,6 @@ public class MeditionRestRepository {
                 null, new ParameterizedTypeReference<>() {});
         return response.getBody();
     }
-
-
 
     //CREACION DE UNA MEDICION EN LA API
     public void save(MeditionDTO medicion) {

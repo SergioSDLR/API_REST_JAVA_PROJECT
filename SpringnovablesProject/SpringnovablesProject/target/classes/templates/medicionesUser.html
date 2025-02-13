@@ -4,7 +4,11 @@
     <title>Mediciones</title>
 </head>
 <body>
-<h1>USER List of Medition</h1>
+
+<!-- Header -->
+<div th:insert="~{headerUser :: headerUser}"></div>
+
+<!-- Contenido principal -->
 <table>
     <thead>
     <tr>
@@ -31,9 +35,9 @@
     </tr>
     </tbody>
 </table>
-<!-- Formulario de logout -->
-<form th:action="@{/logout}" method="post" style="display:inline;">
-    <button type="submit">Cerrar sesión</button>
-</form>
+
+<!-- Footer -->
+<div th:insert="~{footer :: footer}"></div>
+
 </body>
 </html>

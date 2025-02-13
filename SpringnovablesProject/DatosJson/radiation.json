@@ -1,0 +1,11 @@
+[ {
+  "longitud" : "1",
+  "latitud" : "1",
+  "anio" : 2020,
+  "radiation" : 10
+}, {
+  "longitud" : "-1.6593",
+  "latitud" : "24",
+  "anio" : 2024,
+  "radiation" : 8
+} ]

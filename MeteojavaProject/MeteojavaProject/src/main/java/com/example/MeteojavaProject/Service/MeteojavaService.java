@@ -60,7 +60,6 @@ public class MeteojavaService {
             System.out.println("ERROR EN EL METODO DE LA CLASE SERVIDORA");
             return false;
         }
-
     }
 
 

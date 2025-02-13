@@ -77,16 +77,4 @@ public class MeditionDTO {
         this.precipitation = precipitation;
     }
 
-    //Metodo para retornar una medicion en Lista
-    public List<Object> toList(MeditionDTO medicion1){
-        List<Object> listaMedicion= new ArrayList();
-        listaMedicion.add(medicion1.getPk_MedicionID());
-        listaMedicion.add(medicion1.getLatitud());
-        listaMedicion.add(medicion1.getLongitud());
-        listaMedicion.add(medicion1.getAnio());
-        listaMedicion.add(medicion1.getTemperature());
-        listaMedicion.add(medicion1.getWind());
-        listaMedicion.add(getWind());
-        return listaMedicion;
-    }
 }

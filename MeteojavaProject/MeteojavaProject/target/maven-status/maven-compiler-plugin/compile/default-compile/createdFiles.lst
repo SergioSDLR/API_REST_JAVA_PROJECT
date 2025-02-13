@@ -1,0 +1,6 @@
+com\example\MeteojavaProject\DatabaseSeeder.class
+com\example\MeteojavaProject\Repository\MeditionRepository.class
+com\example\MeteojavaProject\Service\MeteojavaService.class
+com\example\MeteojavaProject\Controller\MeteojavaController.class
+com\example\MeteojavaProject\MeteojavaProjectApplication.class
+com\example\MeteojavaProject\Domain\MeditionDTO.class

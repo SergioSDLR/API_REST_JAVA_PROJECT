@@ -1,3 +1,4 @@
+
 package com.example.MeteojavaProject;
 
 import com.example.MeteojavaProject.Domain.MeditionDTO;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
     public class DatabaseSeeder implements CommandLineRunner {
+
+    //ESTA CLASE ESTA CREADA SIMPLEMENTE PARA GENERAR ALGUNAS MEDICIONES EN LA BASE DE DATOS Y QUE NO APAREZCA VACIA
 
         private final MeditionRepository repository;
         private final MeteojavaService service=new MeteojavaService();
@@ -35,34 +38,5 @@ import org.springframework.stereotype.Component;
             medicion2.setWind((short) 3);
             medicion2.setPrecipitation((short) 1);
             repository.save(medicion2);
-
-       /* Medicion medicion3 = new Medicion();
-        medicion3.setLatitud("99.3269");
-        medicion3.setLongitud("51.6593");
-        medicion3.setAnio((short) 1996);
-        medicion3.setTemperature((short) 32);
-        medicion3.setWind((short) 8);
-        medicion3.setPrecipitation((short) 4);*/
-
-
-            System.out.println("Datos iniciales guardados: " + repository.findAll());
-            System.out.println("Medicion " + medicion.getPk_MedicionID()+ ": " + medicion.toList(medicion));
-            System.out.println("Medicion " + medicion2.getPk_MedicionID()+ ": " + medicion2.toList(medicion2));
-
-
-
-        /*repository.findAll().stream()
-                .map(medicion1 -> new Object[]{
-                        medicion1.getAnio(),
-                        medicion1.getLatitud(),
-                        medicion1.getLatitud(),
-                        medicion1.getId(),
-                        medicion1.getPrecipitation(),
-                        medicion1.getTemperature(),
-                        medicion1.getWind()
-                })  // Convertimos cada objeto Persona en un array con sus valores
-                .forEach(campos -> System.out.println(Arrays.toString(campos)));*/
         }
-
-
     }
